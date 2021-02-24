@@ -2,7 +2,7 @@
 class Monmodele extends CI_Model {
     function getContacts() {
         //$sql = "SELECT * FROM contacts";
-        $query = $this->db->get('contacts');
+        $query = $this->db->get('conference');
         return $query->result();
     }
     function ajoutContact($nom, $prenom, $email, $commentaire){

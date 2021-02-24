@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
     
     class User_model extends CI_Model
     {
-        private $table = "user";
+        private $table = "Visiteur";
         
         function __construct()
         {
@@ -16,7 +16,7 @@ if (!defined('BASEPATH'))
         {
             $passwd_crypt = $this->_getUser($login);
             
-            // Si le résultat est différent de false ou s'il n'est pas de même type
+            // Si le rï¿½sultat est diffï¿½rent de false ou s'il n'est pas de mï¿½me type
             if ($passwd_crypt !== false)
                 return (bool) ($password == $passwd_crypt);
                 return false;

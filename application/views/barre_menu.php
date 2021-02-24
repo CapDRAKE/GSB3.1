@@ -3,10 +3,10 @@
 ?>
 <ul id="menu">
 <li>
-		<li> <?php echo anchor('connexion_c/connexion',' Administrer '); ?> </li>
+	<li> <?php echo anchor('connexion_c/connexion',' Administrer '); ?> </li>
 	</li>
 	<li>
-		<?php echo anchor('Moncontroleur/index',' Afficher les contacts '); ?>
+		<?php echo anchor('Moncontroleur/index',' Afficher les conférences '); ?>
 	</li>
 	<li>
 		<?php echo anchor('Moncontroleur/index',' Ajouter des contacts '); ?>

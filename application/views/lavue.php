@@ -7,8 +7,14 @@
 	<h1><?php echo "Bienvenue dans ma page"?></h1>
 	<h3>Ma liste de ouf</h3>	
 	  <?php foreach($query as $item) {?>
-               <li><?php echo "Nom : ",$item->nom;?>
-               <li><?php echo "Prenom: ",$item->prenom;?>
+		<br/>
+			   <li><?php echo "horaire : ",$item->horaire;?>
+               <li><?php echo "duree: ",$item->duree;?>
+               <li><?php echo "nbPlace: ",$item->nbPlace;?>
+               <li><?php echo "dateP: ",$item->dateP;?>
+               <li><?php echo "CodeC: ",$item->CodeC;?>
+               <li><?php echo "Code: ",$item->code;?>
+               <li><?php echo "codeSalle: ",$item->codeSalle;?>			   <br/>
            <?php }?>
 	<?php echo validation_errors();
 	echo form_open('Moncontroleur/ajouterContact');
