@@ -10,5 +10,11 @@ class Monmodele extends CI_Model {
         $query = $this->db->query($sql);
         return $query->result();
     }
+
+    function getInscription(){
+        $sql = "SELECT nom, COUNT(inscris.id) AS nbInscrits FROM inscris, conference WHERE inscris.id = conference.id GROUP BY inscris.id;";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
 }
 ?>
