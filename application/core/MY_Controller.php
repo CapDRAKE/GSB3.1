@@ -24,9 +24,9 @@ class MY_Controller extends CI_Controller
             }
             else
             {
-                // Mauvais identifiant et pas de session déjà enregistrée,
+                // Mauvais identifiant et pas de session dï¿½jï¿½ enregistrï¿½e,
                 // on redirige vers la page de connexion
-                // (par le contrôleur Connexion_c !!)
+                // (par le contrï¿½leur Connexion_c !!)
                 if(!$this->session->userdata('user'))
                     redirect("connexion_c/connexion");
             }
@@ -38,11 +38,11 @@ class MY_Controller extends CI_Controller
                 redirect("connexion_c/connexion");
         }
     }
-    // Permet de définir un affichage identique sur toutes les pages sécurisées
+    // Permet de dï¿½finir un affichage identique sur toutes les pages sï¿½curisï¿½es
     function generer_affichage($data)
     {
         $this->load->view('entete');
-        $this->load->view('admin/barre_menu');
+        $this->load->view('visiteur/barre_menu');
         $this->load->view($data['content'], $data);
         $this->load->view('pied');
     }

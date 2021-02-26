@@ -10,23 +10,36 @@ if (!defined('BASEPATH'))
             $this->load->library('session');
         }
         
-        function connexion()
+        function connexionVisiteur()
         {
-            $data['content'] = "admin/connexion";
+            $data['content'] = "visiteur/connexion";
             $this->load->view('template', $data);
         }
         
-        function deconnexion()
+        function deconnexionVisiteur()
         {
             $this->session->unset_userdata('user');
-            $data['content'] = "admin/connexion";
+            $data['content'] = "visiteur/connexion";
+            $this->load->view('template', $data);
+        }
+
+        function connexionResponsable()
+        {
+            $data['content'] = "responsable/connexion";
+            $this->load->view('template', $data);
+        }
+        
+        function deconnexionResponsable()
+        {
+            $this->session->unset_userdata('user');
+            $data['content'] = "Responsable/connexion";
             $this->load->view('template', $data);
         }
         
         public function index()
         {
             $this->session->unset_userdata('user');
-            $data['content'] = "accueil_view";
+            $data['content'] = "visiteur/connexion";
             $this->load->view('template', $data);
         }
     }

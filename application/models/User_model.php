@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
     
     class User_model extends CI_Model
     {
-        private $table = "Visiteur";
+        private $table = "visiteur";
         
         function __construct()
         {

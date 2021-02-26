@@ -8,13 +8,13 @@
 	<h3>Ma liste de ouf</h3>	
 	  <?php foreach($query as $item) {?>
 		<br/>
-			   <li><?php echo "horaire : ",$item->horaire;?>
+			   <li><?php echo "horaire : ",$item->horaire;?></li>
                <li><?php echo "duree: ",$item->duree;?>
                <li><?php echo "nbPlace: ",$item->nbPlace;?>
                <li><?php echo "dateP: ",$item->dateP;?>
                <li><?php echo "CodeC: ",$item->CodeC;?>
                <li><?php echo "Code: ",$item->code;?>
-               <li><?php echo "codeSalle: ",$item->codeSalle;?>			   <br/>
+               <li><?php echo "codeSalle: ",$item->codeSalle;?>
            <?php }?>
 	<?php echo validation_errors();
 	echo form_open('Moncontroleur/ajouterContact');

@@ -1,6 +1,6 @@
 <html>
 <body>
-<h3>Connexion à l'espace sécurisé</h3>
+<h3>Connexion Ã  l'espace sÃ©curisÃ© Visiteur</h3>
 <div>
 <?php 
 	$this->load->helper('form');

@@ -1,7 +1,7 @@
 <html><head>
 </head>
 <body>
- <h3>Utilisateur introuvable !</h3>
+ <h3>Cette conférence existe !</h3>
 </body>
 
 </html>
