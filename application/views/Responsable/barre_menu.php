@@ -7,13 +7,10 @@
 		<?php echo anchor('administrer_c/index',' Accueil '); ?>
 	</li>
 	<li>
-		<?php echo anchor('administrer_c/afficher',' Afficher les conférences '); ?>
+		<?php echo anchor('administrer_c/afficher',' Statistiques des inscriptions'); ?>
 	</li>
 	<li>
-		<?php echo anchor('administrer_c/rechConf',' Rechercher une conférence '); ?>
-	</li>
-	<li>
-		<?php echo anchor('administrer_c/reserverConf',' Réserver une conférence '); ?>
+		<?php echo anchor('administrer_c/rechConf',' Statistiques des participations'); ?>
 	</li>
 	<li>
 		<?php echo anchor('connexion_c/deconnexionResponsable',' Déconnexion '); ?>

@@ -4,7 +4,7 @@
 <div>
 <?php 
 	$this->load->helper('form');
-	echo form_open("administrer_c");
+	echo form_open("administrer_r");
 ?>
 
 <p>Login :</p>

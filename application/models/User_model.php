@@ -5,6 +5,7 @@ if (!defined('BASEPATH'))
     class User_model extends CI_Model
     {
         private $table = "visiteur";
+        private $tableRESP = "responsable";
         
         function __construct()
         {
@@ -25,6 +26,24 @@ if (!defined('BASEPATH'))
         private function _getUser($login)
         {
             $user = $this->db->select(array('login', 'mdp'))->get_where($this->table, array('login' => $login))->row();
+            if (isset($user->mdp))
+                return $user->mdp;
+                return false;
+        }
+
+        public function valider($login, $password)
+        {
+            $passwd_crypt = $this->getUser($login);
+            
+            // Si le r�sultat est diff�rent de false ou s'il n'est pas de m�me type
+            if ($passwd_crypt !== false)
+                return (bool) ($password == $passwd_crypt);
+                return false;
+        }
+        
+        private function getUser($login)
+        {
+            $user = $this->db->select(array('login', 'mdp'))->get_where($this->tableRESP, array('login' => $login))->row();
             if (isset($user->mdp))
                 return $user->mdp;
                 return false;

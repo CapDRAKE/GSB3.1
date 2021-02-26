@@ -32,7 +32,7 @@ if (!defined('BASEPATH'))
         function deconnexionResponsable()
         {
             $this->session->unset_userdata('user');
-            $data['content'] = "Responsable/connexion";
+            $data['content'] = "responsable/connexion";
             $this->load->view('template', $data);
         }
         
