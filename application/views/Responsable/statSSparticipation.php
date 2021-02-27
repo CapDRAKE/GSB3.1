@@ -9,7 +9,7 @@
         <thead>
             <tr >
                 <th style = "border-bottom: 1px solid black;">Nom Conférence</th>
-                <th style = "border-bottom: 1px solid black;">Nombre Inscrits</th>
+                <th style = "border-bottom: 1px solid black;">Nombre Inscrits sans participations</th>
             </tr>
         </thead>
         <tbody>
@@ -21,11 +21,5 @@
         <?php }?>
         </tbody>
     </table>
-
-    <br>
-
-   
-
-    
 </body>
 </html>
