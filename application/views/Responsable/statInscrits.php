@@ -23,6 +23,27 @@
     </table>
 
     <br>
+    <table style = "text-align : center; border: 1px solid black;">
+        <thead>
+            <tr >
+                <th style = "border-bottom: 1px solid black;">Nom Conférence</th>
+                <th style = "border-bottom: 1px solid black;">Nom Inscrits</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <?php foreach($query2 as $item2) {?>
+                <tr>
+                <td style = "border-bottom: 1px solid black;"><?php echo $item2->nomConf;?></td> 
+                <td style = "border-bottom: 1px solid black;"><?php echo $item2->nomVis;?></td> 
+                </tr>
+            <?php }?>
+            
+            
+        </tbody>
+    </table>
+
+    <br>
 
    
 

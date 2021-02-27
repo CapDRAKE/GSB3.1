@@ -19,19 +19,21 @@ class Administrer_R extends MY_Controller
     {
         $data['content'] = 'responsable/statInscrits';
         $data['query'] = $this->monmodele->getInscription();
-       
+        $data['query2'] = $this->monmodele->getNomInscrits();
         $this->generer_affichageResponsable($data);
     }
     
     function inscriptionsSSparticipation(){
         $data['content'] = 'responsable/statSSparticipation';
         $data['query'] = $this->monmodele->getInscriptionSSparticipation();
+        $data['query2'] = $this->monmodele->getNomInscritsSSparticipation();
         $this->generer_affichageResponsable($data);
     }
 
     function participations(){
         $data['content'] = 'responsable/statAVECparticipation';
         $data['query'] = $this->monmodele->getInscriptionAVECparticipation();
+        $data['query2'] = $this->monmodele->getNomInscritsAVECparticipation();
         $this->generer_affichageResponsable($data);
     }
 
