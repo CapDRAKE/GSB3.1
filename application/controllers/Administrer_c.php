@@ -114,7 +114,30 @@ class Administrer_c extends MY_Controller
                 $this->rechPasOk();
             }
         }
+        else{
+            $data['content'] = "visiteur/rechNom";
+            $this->generer_affichage($data);
+        }
     }
+
+    function reservConf(){
+        $this->load->database();
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nom', 'Nom', 'required');
+        
+        if($this->form_validation->run() == TRUE) {
+            $nom = $this->input->post('nom');
+            $this->load->model('Monmodele');
+            $this->Monmodele->reservConf($nom);
+            $data['content'] = "visiteur/reservOK";
+            $this->generer_affichage($data);
+        }
+        else{
+            $data['content'] = "visiteur/rechNom";
+            $this->generer_affichage($data);
+        }
+    }
+    
     
     function voir($id)
     {

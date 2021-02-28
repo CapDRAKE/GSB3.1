@@ -11,7 +11,7 @@ class Moncontroleur extends CI_Controller {
 		//echo 'Hello world !';
 		//$this->load->view('lavue');
 		//$this->mafonction();
-	    //$data['todo_list'] = array('Me réveiller !!', 'Apprendre le cours :DDD', 'Finir mon programme');
+	    //$data['todo_list'] = array('Me rï¿½veiller !!', 'Apprendre le cours :DDD', 'Finir mon programme');
 	    //$data['title'] = "Mon titre";
 	    //$data['nom'] = "Yoda";
 	    $this->load->database();

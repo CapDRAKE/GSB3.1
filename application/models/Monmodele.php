@@ -46,5 +46,28 @@ class Monmodele extends CI_Model {
         $query = $this->db->query($sql);
         return $query->result();
     }
+
+    function reservConf($nom){
+        $array = $this->session->userdata();
+        //$name = $this->session->get_userdata();
+        $name = $array['user'];
+        $sql1 = "SELECT id FROM visiteur WHERE login = '$name';";
+        $idUtilisateur = $this->db->query($sql1);
+        foreach ($idUtilisateur->result() as $row){
+            $fin1 = $row->id;
+          }
+        $sql2 = "SELECT id FROM conference WHERE nom = '$nom';";
+        $idConf = $this->db->query($sql2);
+        foreach ($idConf->result() as $row){
+            $fin2 = $row->id;
+          }
+        $sql3 = "SELECT theme.CodeC FROM theme, conference WHERE theme.CodeC = conference.CodeC AND Conference.nom = '$nom';";
+        $codC = $this->db->query($sql3);
+        foreach ($codC->result() as $row){
+            $fin3 = $row->CodeC;
+          }
+        $inscris =  array('code' => $fin1, 'id'=> $fin2, 'CodeC'=>$fin3, 'participation'=>'0');
+        $this->db->insert('inscris', $inscris);
+    }
 }
 ?>
