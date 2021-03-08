@@ -25,14 +25,14 @@ if (!defined('BASEPATH'))
 
         function connexionResponsable()
         {
-            $data['content'] = "responsable/connexion";
+            $data['content'] = "Responsable/connexion";
             $this->load->view('template', $data);
         }
         
         function deconnexionResponsable()
         {
             $this->session->unset_userdata('user');
-            $data['content'] = "responsable/connexion";
+            $data['content'] = "Responsable/connexion";
             $this->load->view('template', $data);
         }
         

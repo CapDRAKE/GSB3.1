@@ -4,16 +4,16 @@
 </h3>
 <ul id="menu">
 <li>
-		<?php echo anchor('administrer_r/index',' Accueil '); ?>
+		<?php echo anchor('Administrer_R/index',' Accueil '); ?>
 	</li>
 	<li>
-		<?php echo anchor('administrer_r/inscription',' Statistiques des inscriptions'); ?>
+		<?php echo anchor('Administrer_R/inscription',' Statistiques des inscriptions'); ?>
 	</li>
 	<li>
-		<?php echo anchor('administrer_r/inscriptionsSSparticipation',' Statistiques des inscriptions sans participations'); ?>
+		<?php echo anchor('Administrer_R/inscriptionsSSparticipation',' Statistiques des inscriptions sans participations'); ?>
 	</li>
 	<li>
-		<?php echo anchor('administrer_r/participations',' Statistiques des participations'); ?>
+		<?php echo anchor('Administrer_R/participations',' Statistiques des participations'); ?>
 	</li>
 	<li>
 		<?php echo anchor('connexion_c/deconnexionResponsable',' Déconnexion '); ?>

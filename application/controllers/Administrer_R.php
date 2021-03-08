@@ -11,27 +11,27 @@ class Administrer_R extends MY_Controller
     
     function index()
     {
-        $data['content'] = 'responsable/index';
+        $data['content'] = 'Responsable/index';
         $this->generer_affichageResponsable($data);
     }
 
     function inscription()
     {
-        $data['content'] = 'responsable/statInscrits';
+        $data['content'] = 'Responsable/statInscrits';
         $data['query'] = $this->monmodele->getInscription();
         $data['query2'] = $this->monmodele->getNomInscrits();
         $this->generer_affichageResponsable($data);
     }
     
     function inscriptionsSSparticipation(){
-        $data['content'] = 'responsable/statSSparticipation';
+        $data['content'] = 'Responsable/statSSparticipation';
         $data['query'] = $this->monmodele->getInscriptionSSparticipation();
         $data['query2'] = $this->monmodele->getNomInscritsSSparticipation();
         $this->generer_affichageResponsable($data);
     }
 
     function participations(){
-        $data['content'] = 'responsable/statAVECparticipation';
+        $data['content'] = 'Responsable/statAVECparticipation';
         $data['query'] = $this->monmodele->getInscriptionAVECparticipation();
         $data['query2'] = $this->monmodele->getNomInscritsAVECparticipation();
         $this->generer_affichageResponsable($data);
