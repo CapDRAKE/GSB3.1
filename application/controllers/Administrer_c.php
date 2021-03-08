@@ -21,6 +21,14 @@ class Administrer_c extends MY_Controller
         $data['query'] = $this->monmodele->getConf();
         $this->generer_affichage($data);
     }
+
+
+    function afficherAVenir()
+    {
+        $data['content'] = 'visiteur/confAVenir';
+        $data['query'] = $this->monmodele->getConfaVenir();
+        $this->generer_affichage($data);
+    }
     
     function ajoutConf(){
         $this->load->helper('html');
@@ -128,9 +136,15 @@ class Administrer_c extends MY_Controller
         if($this->form_validation->run() == TRUE) {
             $nom = $this->input->post('nom');
             $this->load->model('Monmodele');
-            $this->Monmodele->reservConf($nom);
-            $data['content'] = "visiteur/reservOK";
-            $this->generer_affichage($data);
+            if($this->Monmodele->reservConf($nom)){
+                $data['content'] = "visiteur/reservOK";
+                $this->generer_affichage($data);
+            }
+            else{
+                $data['content'] = "visiteur/pasreserver";
+                $this->generer_affichage($data);
+            }
+
         }
         else{
             $data['content'] = "visiteur/rechNom";

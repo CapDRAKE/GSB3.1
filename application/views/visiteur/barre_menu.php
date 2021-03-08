@@ -16,7 +16,7 @@
 		<?php echo anchor('administrer_c/reserverConf',' Inscription à une conférence '); ?>
 	</li>
 	<li>
-		<?php echo anchor('administrer_c/','Conférence à venir'); ?>
+		<?php echo anchor('administrer_c/afficherAVenir','Conférence à venir'); ?>
 	</li>
 	<li>
 		<?php echo anchor('administrer_c/','Valider la participation à une conférence'); ?>

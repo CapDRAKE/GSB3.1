@@ -1,7 +1,22 @@
 <?php
 class Monmodele extends CI_Model {
     function getConf() {
-        $query = $this->db->get('conference');
+        $sql = "SELECT * FROM conference WHERE dateP > NOW();";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+    function getConfaVenir() {
+        $array = $this->session->userdata();
+        //$name = $this->session->get_userdata();
+        $name = $array['user'];
+        $sql1 = "SELECT id FROM visiteur WHERE login = '$name';";
+        $idUtilisateur = $this->db->query($sql1);
+        foreach ($idUtilisateur->result() as $row){
+            $fin1 = $row->id;
+        }
+        $sql = "SELECT DISTINCT Conference.nom, Conference.horaire, Conference.duree, Conference.dateP, Conference.codeSalle FROM conference, inscris WHERE inscris.id = conference.id AND inscris.code = '$fin1' AND conference.dateP > NOW();";
+        $query = $this->db->query($sql);
         return $query->result();
     }
     
@@ -67,7 +82,23 @@ class Monmodele extends CI_Model {
             $fin3 = $row->CodeC;
           }
         $inscris =  array('code' => $fin1, 'id'=> $fin2, 'CodeC'=>$fin3, 'participation'=>'0');
-        $this->db->insert('inscris', $inscris);
+        $sql4 =  "SELECT id FROM inscris;";
+        $result = $this->db->query($sql4);
+        foreach ($result->result() as $row){
+            $id = $row->id;
+            echo $id;
+            echo $fin2;
+            if($id = $fin2){
+                $ok = false;
+            }
+          }
+        if(!$ok){
+            return false;
+        }
+        else{
+            $this->db->insert('inscris', $inscris);
+            return true;
+        }
     }
 }
 ?>
