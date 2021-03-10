@@ -46,6 +46,15 @@ class Administrer_c extends MY_Controller
         $data['query'] = $this->monmodele->getConf();
         $this->generer_affichage($data);
     }
+
+    function participConf(){
+        $this->load->helper('html');
+        $this->load->helper('form');
+        $this->load->helper('url');
+        $data['content'] = 'visiteur/valider';
+        $data['query'] = $this->monmodele->getConfaVenir();
+        $this->generer_affichage($data);
+    }
     
     function suppContact(){
         $this->load->helper('html');
@@ -151,7 +160,28 @@ class Administrer_c extends MY_Controller
             $this->generer_affichage($data);
         }
     }
+    function participerConf(){
+        $this->load->database();
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nom', 'Nom', 'required');
+        if($this->form_validation->run() == TRUE) {
+            $nom = $this->input->post('nom');
+            $this->load->model('Monmodele');
+            if($this->Monmodele->setParticiper($nom)){
+                $data['content'] = 'visiteur/validOK';
+                $this->generer_affichage($data);
+            }
+            else{
+                $data['content'] = 'visiteur/validPasOK';
+                $this->generer_affichage($data);
+            }
 
+        }
+        else{
+            $data['content'] = "visiteur/participer";
+            $this->generer_affichage($data);
+        }
+    }
     function supprConf(){
         $this->load->helper('form');
         $data['content'] = 'visiteur/confInscris';
@@ -181,38 +211,6 @@ class Administrer_c extends MY_Controller
             $data['content'] = "visiteur/rechNom";
             $this->generer_affichage($data);
         }
-    }
-    
-    
-    function voir($id)
-    {
-        $data['content'] = 'visiteur/ajouter';
-        $data['contact'] = $this->contacts_model->get_un_contact($id);
-        $this->generer_affichage($data);
-    }
-    
-    function modifier($id)
-    {
-        $this->contacts_model->modifier_contact($id, $this->input->post());
-        $data['content'] = 'visiteur/detail_contact_view';
-        $data['message'] = 'Le contact a �t� mis � jour.';
-        $data['contact'] = $this->contacts_model->get_un_contact($id);
-        $this->generer_affichage($data);
-    }
-    
-    function supprimer($id)
-    {
-        $data['content'] = 'visiteur/suppression_contact_view';
-        $data['contact'] = $this->contacts_model->get_un_contact($id);
-        $this->generer_affichage($data);
-    }
-    
-    function validation_supprimer($id)
-    {
-        $this->contacts_model->supprimer_contact($id);
-        $data['content'] = 'visiteur/affiche_contacts_view';
-        $data['listeContacts'] = $this->contacts_model->get_les_contacts();
-        $this->generer_affichage($data);
     }
 }
 /* End of file administrer_c.php */

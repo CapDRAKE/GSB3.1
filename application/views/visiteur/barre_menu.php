@@ -22,7 +22,7 @@
 		<?php echo anchor('administrer_c/afficherAVenir','Conférence à venir'); ?>
 	</li>
 	<li>
-		<?php echo anchor('administrer_c/','Valider la participation à une conférence'); ?>
+		<?php echo anchor('administrer_c/participConf','Valider la participation à une conférence'); ?>
 	</li>
 	<li>
 		<?php echo anchor('connexion_c/deconnexionVisiteur',' Déconnexion '); ?>
