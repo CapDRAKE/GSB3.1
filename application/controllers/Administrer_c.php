@@ -161,7 +161,10 @@ class Administrer_c extends MY_Controller
 
     function supprInscription(){
         $this->load->database();
-        $this->load->supprInscri();
+        $this->monmodele->supprInscri();
+        $data['content'] = 'visiteur/confInscris';
+        $data['query'] = $this->monmodele->getConfInscris();
+        $this->generer_affichage($data);
     }
     
     

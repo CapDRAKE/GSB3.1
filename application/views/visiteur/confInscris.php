@@ -30,7 +30,7 @@
                <td style = "border-bottom: 1px solid black;"><?php echo $item->codeC;?></td>
                <td style = "border-bottom: 1px solid black;"><?php echo $item->code;?></td>
                <td style = "border-bottom: 1px solid black;"><?php echo $item->codeSalle;?></td>
-               <td style = "border-bottom: 1px solid black;"><button type="button" onclick="<?php echo base_url()?>Administer_c/supprInscription">suppression</button></td>
+               <td style = "border-bottom: 1px solid black;"><?php echo form_submit('suppression', 'Suppression');?></td>
             </tr>
         <?php }?>
         </tbody>
