@@ -129,7 +129,7 @@ class Monmodele extends CI_Model {
         return $query->result();
     }
 
-    function supprInscri(){
+    function supprInscri($nom){
         $array = $this->session->userdata();
         $name = $array['user'];
         $sql = "SELECT id FROM visiteur WHERE login = '$name';";
@@ -139,7 +139,7 @@ class Monmodele extends CI_Model {
         }
         $sql1 = "DELETE FROM inscris WHERE code = '$fin1';";
         $query = $this->db->query($sql1);
-        return $query->result();
+        return true;
     }
 }
 ?>
