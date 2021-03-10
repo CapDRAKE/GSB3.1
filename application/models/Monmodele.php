@@ -144,5 +144,31 @@ class Monmodele extends CI_Model {
             return false;
         }
     }
+
+    function getConfInscris() {
+        $array = $this->session->userdata();
+        $name = $array['user'];
+        $sql = "SELECT id FROM visiteur WHERE login = '$name';";
+        $idUtilisateur = $this->db->query($sql);
+        foreach ($idUtilisateur->result() as $row){
+            $fin1 = $row->id;
+        }
+        $sql1 = "SELECT conference.id, conference.nom, conference.horaire, conference.duree, conference.nbPlace, conference.dateP, conference.codeC, conference.code, conference.codeSalle FROM conference, inscris WHERE inscris.id = conference.id AND inscris.code = '$fin1';";
+        $query = $this->db->query($sql1);
+        return $query->result();
+    }
+
+    function supprInscri(){
+        $array = $this->session->userdata();
+        $name = $array['user'];
+        $sql = "SELECT id FROM visiteur WHERE login = '$name';";
+        $idUtilisateur = $this->db->query($sql);
+        foreach ($idUtilisateur->result() as $row){
+            $fin1 = $row->id;
+        }
+        $sql1 = "DELETE FROM inscris WHERE code = '$fin1';";
+        $query = $this->db->query($sql1);
+        return $query->result();
+    }
 }
 ?>

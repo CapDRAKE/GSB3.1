@@ -160,7 +160,6 @@ class Administrer_c extends MY_Controller
             $this->generer_affichage($data);
         }
     }
-
     function participerConf(){
         $this->load->database();
         $this->load->library('form_validation');
@@ -182,6 +181,16 @@ class Administrer_c extends MY_Controller
             $data['content'] = "visiteur/participer";
             $this->generer_affichage($data);
         }
+    function supprConf(){
+        $this->load->helper('form');
+        $data['content'] = 'visiteur/confInscris';
+        $data['query'] = $this->monmodele->getConfInscris();
+        $this->generer_affichage($data);
+    }
+
+    function supprInscription(){
+        $this->load->database();
+        $this->load->supprInscri();
     }
     
     
