@@ -101,5 +101,13 @@ class Monmodele extends CI_Model {
             return true;
         }
     }
+
+    function getConfInscrit() {
+        $sql = "SELECT id FROM visiteur WHERE login = '$name';";
+        $idUtilisateur = $this->db->query($sql1);
+        $sql1 = "SELECT conference.id, conference.nom, conference.horaire, conference.duree, conference.nbPlace, conference.dateP, conference.codeC, conference.code, conference.codeSalle FROM conference, inscris WHERE inscris.id = conference.id AND inscris.code = $idUtilisateur;";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
 }
 ?>

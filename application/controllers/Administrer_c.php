@@ -151,6 +151,12 @@ class Administrer_c extends MY_Controller
             $this->generer_affichage($data);
         }
     }
+
+    function supprConf(){
+        $data['content'] = 'visiteur/afficher';
+        $data['query'] = $this->monmodele->getConfInscrit();
+        $this->generer_affichage($data);
+    }
     
     
     function voir($id)
