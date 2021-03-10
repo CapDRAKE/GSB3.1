@@ -153,9 +153,15 @@ class Administrer_c extends MY_Controller
     }
 
     function supprConf(){
-        $data['content'] = 'visiteur/afficher';
-        $data['query'] = $this->monmodele->getConfInscrit();
+        $this->load->helper('form');
+        $data['content'] = 'visiteur/confInscris';
+        $data['query'] = $this->monmodele->getConfInscris();
         $this->generer_affichage($data);
+    }
+
+    function supprInscription(){
+        $this->load->database();
+        $this->load->supprInscri();
     }
     
     
