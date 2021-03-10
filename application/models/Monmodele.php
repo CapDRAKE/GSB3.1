@@ -63,42 +63,56 @@ class Monmodele extends CI_Model {
     }
 
     function reservConf($nom){
-        $ok=true;
-        $array = $this->session->userdata();
-        //$name = $this->session->get_userdata();
-        $name = $array['user'];
-        $sql1 = "SELECT id FROM visiteur WHERE login = '$name';";
-        $idUtilisateur = $this->db->query($sql1);
-        foreach ($idUtilisateur->result() as $row){
-            $fin1 = $row->id;
-          }
-        $sql2 = "SELECT id FROM conference WHERE nom = '$nom';";
-        $idConf = $this->db->query($sql2);
-        foreach ($idConf->result() as $row){
-            $fin2 = $row->id;
-          }
-        $sql3 = "SELECT theme.CodeC FROM theme, conference WHERE theme.CodeC = conference.CodeC AND Conference.nom = '$nom';";
-        $codC = $this->db->query($sql3);
-        foreach ($codC->result() as $row){
-            $fin3 = $row->CodeC;
-          }
-        $inscris =  array('code' => $fin1, 'id'=> $fin2, 'CodeC'=>$fin3, 'participation'=>'0');
-        $sql4 =  "SELECT id FROM inscris;";
-        $result = $this->db->query($sql4);
-        foreach ($result->result() as $row){
-            $id = $row->id;
-            echo $id;
-            echo $fin2;
-            if($id == $fin2){
-                $ok = false;
+        $verifier=false;
+        $verif = "SELECT * FROM conference WHERE dateP > NOW();";
+        $query = $this->db->query($verif);
+        foreach ($query->result() as $row){
+            $id = $row->nom;
+            if($id == $nom){
+                $verifier = true;
             }
           }
-        if(!$ok){
-            return false;
+        if($verifier = true){
+            $ok=true;
+            $array = $this->session->userdata();
+            //$name = $this->session->get_userdata();
+            $name = $array['user'];
+            $sql1 = "SELECT id FROM visiteur WHERE login = '$name';";
+            $idUtilisateur = $this->db->query($sql1);
+            foreach ($idUtilisateur->result() as $row){
+                $fin1 = $row->id;
+            }
+            $sql2 = "SELECT id FROM conference WHERE nom = '$nom';";
+            $idConf = $this->db->query($sql2);
+            foreach ($idConf->result() as $row){
+                $fin2 = $row->id;
+            }
+            $sql3 = "SELECT theme.CodeC FROM theme, conference WHERE theme.CodeC = conference.CodeC AND Conference.nom = '$nom';";
+            $codC = $this->db->query($sql3);
+            foreach ($codC->result() as $row){
+                $fin3 = $row->CodeC;
+            }
+            $inscris =  array('code' => $fin1, 'id'=> $fin2, 'CodeC'=>$fin3, 'participation'=>'0');
+            $sql4 =  "SELECT id FROM inscris;";
+            $result = $this->db->query($sql4);
+            foreach ($result->result() as $row){
+                $id = $row->id;
+                echo $id;
+                echo $fin2;
+                if($id == $fin2){
+                    $ok = false;
+                }
+            }
+            if(!$ok){
+                return false;
+            }
+            else{
+                $this->db->insert('inscris', $inscris);
+                return true;
+            }
         }
         else{
-            $this->db->insert('inscris', $inscris);
-            return true;
+            return false;
         }
     }
 }
