@@ -46,6 +46,15 @@ class Administrer_c extends MY_Controller
         $data['query'] = $this->monmodele->getConf();
         $this->generer_affichage($data);
     }
+
+    function participConf(){
+        $this->load->helper('html');
+        $this->load->helper('form');
+        $this->load->helper('url');
+        $data['content'] = 'visiteur/valider';
+        $data['query'] = $this->monmodele->getConfaVenir();
+        $this->generer_affichage($data);
+    }
     
     function suppContact(){
         $this->load->helper('html');
@@ -148,6 +157,29 @@ class Administrer_c extends MY_Controller
         }
         else{
             $data['content'] = "visiteur/rechNom";
+            $this->generer_affichage($data);
+        }
+    }
+
+    function participerConf(){
+        $this->load->database();
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nom', 'Nom', 'required');
+        if($this->form_validation->run() == TRUE) {
+            $nom = $this->input->post('nom');
+            $this->load->model('Monmodele');
+            if($this->Monmodele->setParticiper($nom)){
+                $data['content'] = 'visiteur/validOK';
+                $this->generer_affichage($data);
+            }
+            else{
+                $data['content'] = 'visiteur/validPasOK';
+                $this->generer_affichage($data);
+            }
+
+        }
+        else{
+            $data['content'] = "visiteur/participer";
             $this->generer_affichage($data);
         }
     }
