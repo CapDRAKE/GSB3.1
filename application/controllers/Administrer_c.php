@@ -181,6 +181,7 @@ class Administrer_c extends MY_Controller
             $data['content'] = "visiteur/participer";
             $this->generer_affichage($data);
         }
+    }
     function supprConf(){
         $this->load->helper('form');
         $data['content'] = 'visiteur/confInscris';
@@ -191,38 +192,6 @@ class Administrer_c extends MY_Controller
     function supprInscription(){
         $this->load->database();
         $this->load->supprInscri();
-    }
-    
-    
-    function voir($id)
-    {
-        $data['content'] = 'visiteur/ajouter';
-        $data['contact'] = $this->contacts_model->get_un_contact($id);
-        $this->generer_affichage($data);
-    }
-    
-    function modifier($id)
-    {
-        $this->contacts_model->modifier_contact($id, $this->input->post());
-        $data['content'] = 'visiteur/detail_contact_view';
-        $data['message'] = 'Le contact a �t� mis � jour.';
-        $data['contact'] = $this->contacts_model->get_un_contact($id);
-        $this->generer_affichage($data);
-    }
-    
-    function supprimer($id)
-    {
-        $data['content'] = 'visiteur/suppression_contact_view';
-        $data['contact'] = $this->contacts_model->get_un_contact($id);
-        $this->generer_affichage($data);
-    }
-    
-    function validation_supprimer($id)
-    {
-        $this->contacts_model->supprimer_contact($id);
-        $data['content'] = 'visiteur/affiche_contacts_view';
-        $data['listeContacts'] = $this->contacts_model->get_les_contacts();
-        $this->generer_affichage($data);
     }
 }
 /* End of file administrer_c.php */
