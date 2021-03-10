@@ -63,6 +63,7 @@ class Monmodele extends CI_Model {
     }
 
     function reservConf($nom){
+        $ok=true;
         $array = $this->session->userdata();
         //$name = $this->session->get_userdata();
         $name = $array['user'];
@@ -88,7 +89,7 @@ class Monmodele extends CI_Model {
             $id = $row->id;
             echo $id;
             echo $fin2;
-            if($id = $fin2){
+            if($id == $fin2){
                 $ok = false;
             }
           }
