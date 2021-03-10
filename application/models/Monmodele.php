@@ -166,7 +166,7 @@ class Monmodele extends CI_Model {
         foreach ($idUtilisateur->result() as $row){
             $fin1 = $row->id;
         }
-        $sql1 = "DELETE FROM inscris WHERE code = '$fin1';";
+        $sql1 = "DELETE FROM inscris WHERE id = (SELECT id FROM conference WHERE nom = '$nom');";
         $query = $this->db->query($sql1);
         return true;
     }
